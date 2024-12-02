@@ -34,10 +34,10 @@ public class UserServiceTest {
 
 	@BeforeEach
 	public void setup() {
-		users = Users.builder().id(1).userName("dinhhai222").email("haitranvipqta@gmail.com").phone("0383534267")
+		users = Users.builder().id(1).userName("").email("").phone("")
 				.build();
 
-		saveUser = Users.builder().id(2).userName("dinhhaiTest").email("haitranvipqt2@gmail.com").phone("0383534268")
+		saveUser = Users.builder().id(2).userName("").email("").phone("")
 				.build();
 
 		listUser = List.of(users, saveUser);
@@ -66,7 +66,7 @@ public class UserServiceTest {
 	@Test
 	void UserService_findUsersByUsersName_ReturnsUser() throws Exception {
 		when(userDaoImpl.findUsersByUsersName(anyString())).thenReturn(users);
-		Users userById = userServiceImpl.findUsersByUsersName("dinhhai");
+		Users userById = userServiceImpl.findUsersByUsersName("");
 
 		Assertions.assertThat(userById).isNotNull();
 		Assertions.assertThat(userById.getId()).isEqualTo(1);
@@ -76,7 +76,7 @@ public class UserServiceTest {
 	@Test
 	void UserService_FindUsersByUsersNameAndEmail_ReturnsUser() throws Exception {
 		when(userDaoImpl.findUsersByUsersNameAndEmail(anyString(), anyString())).thenReturn(users);
-		Users userById = userServiceImpl.findUsersByUsersNameAndEmail("dinhhai", "haitranvipqt2@gmail.com");
+		Users userById = userServiceImpl.findUsersByUsersNameAndEmail("", "");
 
 		Assertions.assertThat(userById).isNotNull();
 		Assertions.assertThat(userById.getId()).isEqualTo(1);
@@ -86,7 +86,7 @@ public class UserServiceTest {
 	@Test
 	void UserService_FindUsersByUsersNameAndPassword_ReturnsUser() throws Exception {
 		when(userDaoImpl.findUsersByUsersNameAndPassword(anyString(), anyString())).thenReturn(users);
-		Users userById = userServiceImpl.findUsersByUsersNameAndPassword("dinhhai", "englishcenter");
+		Users userById = userServiceImpl.findUsersByUsersNameAndPassword("", "englishcenter");
 
 		Assertions.assertThat(userById).isNotNull();
 		Assertions.assertThat(userById.getId()).isEqualTo(1);
@@ -96,7 +96,7 @@ public class UserServiceTest {
 	@Test
 	void UserService_FindUsersByEmail_ReturnsUser() throws Exception {
 		when(userDaoImpl.findUsersByEmail(anyString(), anyInt())).thenReturn(users);
-		Users userById = userServiceImpl.findUsersByEmail("dinhhai", 1);
+		Users userById = userServiceImpl.findUsersByEmail("", 1);
 
 		Assertions.assertThat(userById).isNotNull();
 		Assertions.assertThat(userById.getId()).isEqualTo(1);
@@ -117,8 +117,7 @@ public class UserServiceTest {
 		when(userDaoImpl.spUCreateUsers(anyString(), anyString(), anyString(), anyString(), anyString(), anyInt(),
 				anyString(), anyInt(), anyInt(), anyInt(), anyString())).thenReturn(users);
 
-		Users user = userDaoImpl.spUCreateUsers("dinhhai", "Tran Dinh Hai", "haitranvipqt2@gmail.com", "0383534267",
-				"Dinhhai", 1, "20/09/2002", 1, 1, 1, "Lê Văn Việt");
+		Users user = userDaoImpl.spUCreateUsers(//data);
 
 		Assertions.assertThat(user).isNotNull();
 		Assertions.assertThat(user.getId()).isEqualTo(1);
